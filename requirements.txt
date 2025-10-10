@@ -1,3 +1,7 @@
 langchain
 beautifulsoup4
 requests
+sentence-transformers
+langchain-huggingface
+langchain-community
+faiss-cpu
