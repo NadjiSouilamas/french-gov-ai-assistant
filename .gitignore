@@ -1,4 +1,5 @@
 .venv
+.env
 notebooks/
 data/processed/*
 data/raw/*
