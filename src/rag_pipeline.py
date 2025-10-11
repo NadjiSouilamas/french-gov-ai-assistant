@@ -6,10 +6,9 @@ from langchain_anthropic import ChatAnthropic
 from langchain.chains import RetrievalQA
 
 
-load_dotenv("../.env")
+load_dotenv(".env")
 
-DATA_PATH = os.path.join("..", "data")
-INDEX_PATH = os.path.join(DATA_PATH, "faiss_index_langchain")
+INDEX_PATH = os.path.join("data", "faiss_index_langchain")
 
 # Load embeddings & retriever
 embeddings = HuggingFaceEmbeddings(

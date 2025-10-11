@@ -5,9 +5,8 @@ from langchain_community.document_loaders import TextLoader
 from langchain_community.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEmbeddings
 
-DATA_DIR = os.path.join("..", "data")
-RAW_DIR = os.path.join(DATA_DIR, "raw")
-INDEX_PATH = os.path.join(DATA_DIR, "faiss_index_langchain")
+RAW_DIR = os.path.join("data", "raw")
+INDEX_PATH = os.path.join("data", "faiss_index_langchain")
 
 
 def load_documents() -> List:
