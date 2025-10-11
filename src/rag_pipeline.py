@@ -6,10 +6,9 @@ from langchain_anthropic import ChatAnthropic
 from langchain.chains import RetrievalQA
 
 
-load_dotenv("../.env")
+load_dotenv(".env")
 
-DATA_PATH = os.path.join("..", "data")
-INDEX_PATH = os.path.join(DATA_PATH, "faiss_index_langchain")
+INDEX_PATH = os.path.join("data", "faiss_index_langchain")
 
 # Load embeddings & retriever
 embeddings = HuggingFaceEmbeddings(
@@ -35,16 +34,9 @@ qa_chain = RetrievalQA.from_chain_type(
 )
 
 
-def ask(question: str):
+def get_answer(question: str) -> str:
     result = qa_chain.invoke({"query": question})
-    print("\n🧠 Question:", question)
-    print("💬 Answer:\n", result["result"])
-    print("\n📚 Sources:")
-    for doc in result["source_documents"]:
-        print("-", doc.metadata.get("source", "Unknown"))
+    sources = [doc.metadata.get("source", "Unknown") for doc in result["source_documents"]]
 
+    return {"answer": result["result"], "sources": sources}
 
-# Use on examples
-if __name__ == "__main__":
-    ask("Comment renouveler mon passeport ?")
-    ask("Quels documents faut-il pour un mariage civil ?")
